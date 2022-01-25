@@ -63,6 +63,7 @@ import sys.io.File;
 
 #if mobileC
 import ui.Mobilecontrols;
+import ui.Hitbox
 #end
 
 using StringTools;
@@ -121,6 +122,8 @@ class PlayState extends MusicBeatState
 	public var boyfriendGroup:FlxSpriteGroup;
 	public var dadGroup:FlxSpriteGroup;
 	public var gfGroup:FlxSpriteGroup;
+	
+	var _hitbox:Hitbox;
 
 	public static var mania:Int;
 	public static var curStage:String = '';
@@ -972,6 +975,30 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		#if mobileC
+			var curcontrol:HitboxType = DEFAULT;
+
+		switch (mania){
+			case 0:
+				curcontrol = DEFAULT;
+			case 1:
+				curcontrol = SIX;
+			case 2:
+				curcontrol = NINE;					
+			case 3:
+				curcontrol = FIVE;	
+			case 4:
+				curcontrol = SEVEN;
+			case 5:
+				curcontrol = EIGHT;
+			case 6:
+				curcontrol = ONE;
+			case 7:
+				curcontrol = TWO;
+			case 8:
+				curcontrol = THREE;									
+			default:
+				curcontrol = DEFAULT;
+		        }
 			mcontrols = new Mobilecontrols();
 			controls.setHitBoxNOTES(mcontrols._hitbox);
 			trackedinputsNOTES = controls.trackedinputsNOTES;
