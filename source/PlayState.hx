@@ -63,7 +63,7 @@ import sys.io.File;
 
 #if mobileC
 import ui.Mobilecontrols;
-import ui.Hitbox
+import ui.Hitbox;
 #end
 
 using StringTools;
