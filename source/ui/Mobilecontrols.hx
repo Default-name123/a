@@ -6,7 +6,9 @@ import flixel.group.FlxSpriteGroup;
 import ui.FlxVirtualPad;
 import ui.Hitbox;
 
-import Song.SwagSong;
+import flixel.input.FlxInput;
+import flixel.input.actions.FlxAction;
+import flixel.input.actions.FlxActionInput;
 
 import Config;
 
