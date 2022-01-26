@@ -6,19 +6,6 @@ import flixel.group.FlxSpriteGroup;
 import ui.FlxVirtualPad;
 import ui.Hitbox;
 
-import flixel.FlxG;
-import flixel.input.FlxInput;
-import flixel.input.actions.FlxAction;
-import flixel.input.actions.FlxActionInput;
-import flixel.input.actions.FlxActionInputDigital;
-import flixel.input.actions.FlxActionManager;
-import flixel.input.actions.FlxActionSet;
-import flixel.input.gamepad.FlxGamepadButton;
-import flixel.input.gamepad.FlxGamepadInputID;
-import flixel.input.keyboard.FlxKey;
-import flixel.group.FlxGroup;
-import flixel.ui.FlxButton;
-
 import Config;
 
 class Mobilecontrols extends FlxSpriteGroup
@@ -26,6 +13,8 @@ class Mobilecontrols extends FlxSpriteGroup
 	public var mode:ControlsGroup = HITBOX;
 
 	public var _hitbox:Hitbox;
+	public var _virtualPad:FlxVirtualPad;
+
 	var config:Config;
 
 	public function new() 
@@ -37,33 +26,31 @@ class Mobilecontrols extends FlxSpriteGroup
 		// load control mode num from Config.hx
 		mode = getModeFromNumber(config.getcontrolmode());
 		trace(config.getcontrolmode());
-		var curcontrol:HitboxType = DEFAULT;
 
-		switch (mania){
-			case 0:
-				curcontrol = DEFAULT;
-			case 1:
-				curcontrol = SIX;
-			case 2:
-				curcontrol = NINE;					
-			case 3:
-				curcontrol = FIVE;	
-			case 4:
-				curcontrol = SEVEN;
-			case 5:
-				curcontrol = EIGHT;
-			case 6:
-				curcontrol = ONE;
-			case 7:
-				curcontrol = TWO;
-			case 8:
-				curcontrol = THREE;									
-			default:
-				curcontrol = DEFAULT;
+		switch (mode)
+		{
+			case HITBOX:
+				_hitbox = new Hitbox();
+				add(_hitbox);
+			case KEYBOARD:
 		}
-			_hitbox = new Hitbox(curcontrol);
-			add(_hitbox);
+	}
+
+	function initVirtualPad(vpadMode:Int) 
+	{
+		switch (vpadMode)
+		{
+			case 1:
+				_virtualPad = new FlxVirtualPad(FULL, NONE);
+			case 2:
+				_virtualPad = new FlxVirtualPad(FULL, NONE);
+				_virtualPad = config.loadcustom(_virtualPad);
+			default: // 0
+				_virtualPad = new FlxVirtualPad(RIGHT_FULL, NONE);
+		}
 		
+		_virtualPad.alpha = 0.75;
+		add(_virtualPad);	
 	}
 
 
@@ -71,6 +58,7 @@ class Mobilecontrols extends FlxSpriteGroup
 		return switch (modeNum)
 		{
 			case 0: HITBOX;
+			case 1: KEYBOARD;
 
 			default: HITBOX;
 
@@ -80,4 +68,5 @@ class Mobilecontrols extends FlxSpriteGroup
 
 enum ControlsGroup {
 	HITBOX;
+	KEYBOARD;
 }
