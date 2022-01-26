@@ -975,7 +975,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		#if mobileC
-			var curcontrol:HitboxType = DEFAULT;
+		var curcontrol:HitboxType = DEFAULT;
 
 		switch (mania){
 			case 0:
@@ -1000,7 +1000,8 @@ class PlayState extends MusicBeatState
 				curcontrol = DEFAULT;
 		        }
 			mcontrols = new Mobilecontrols();
-			controls.setHitBoxNOTES(mcontrols._hitbox);
+	                _hitbox = new Hitbox(curcontrol);
+	                controls.setHitBoxNOTES(_hitbox, curcontrol);
 			trackedinputsNOTES = controls.trackedinputsNOTES;
 			controls.trackedinputsNOTES = [];
 
