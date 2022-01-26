@@ -6,7 +6,9 @@ import flixel.group.FlxSpriteGroup;
 import ui.FlxVirtualPad;
 import ui.Hitbox;
 
-import Controls;
+import openfl.ui.KeyLocation;
+import openfl.events.Event;
+import Section.SwagSection;
 
 import Config;
 
