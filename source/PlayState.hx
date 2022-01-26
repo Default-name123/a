@@ -999,7 +999,6 @@ class PlayState extends MusicBeatState
 			default:
 				curcontrol = DEFAULT;
 		        }
-			mcontrols = new Mobilecontrols();
 	                _hitbox = new Hitbox(curcontrol);
 	                controls.setHitBoxNOTES(_hitbox, curcontrol);
 			trackedinputsNOTES = controls.trackedinputsNOTES;
@@ -1008,11 +1007,11 @@ class PlayState extends MusicBeatState
 			var camcontrol = new FlxCamera();
 			FlxG.cameras.add(camcontrol);
 			camcontrol.bgColor.alpha = 0;
-			mcontrols.cameras = [camcontrol];
+			_hitbox.cameras = [camcontrol];
 
-			mcontrols.visible = false;
+			_hitbox.visible = false;
 
-			add(mcontrols);
+			add(_hitbox);
 		#end		
 
 		// if (SONG.song == 'South')
