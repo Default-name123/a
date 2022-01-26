@@ -6,9 +6,18 @@ import flixel.group.FlxSpriteGroup;
 import ui.FlxVirtualPad;
 import ui.Hitbox;
 
-import openfl.ui.KeyLocation;
-import openfl.events.Event;
-import Section.SwagSection;
+import flixel.FlxG;
+import flixel.input.FlxInput;
+import flixel.input.actions.FlxAction;
+import flixel.input.actions.FlxActionInput;
+import flixel.input.actions.FlxActionInputDigital;
+import flixel.input.actions.FlxActionManager;
+import flixel.input.actions.FlxActionSet;
+import flixel.input.gamepad.FlxGamepadButton;
+import flixel.input.gamepad.FlxGamepadInputID;
+import flixel.input.keyboard.FlxKey;
+import flixel.group.FlxGroup;
+import flixel.ui.FlxButton;
 
 import Config;
 
