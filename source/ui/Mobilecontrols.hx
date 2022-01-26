@@ -6,6 +6,8 @@ import flixel.group.FlxSpriteGroup;
 import ui.FlxVirtualPad;
 import ui.Hitbox;
 
+import Song.SwagSong;
+
 import Config;
 
 class Mobilecontrols extends FlxSpriteGroup
